@@ -1,0 +1,39 @@
+{
+  "name": "glergle-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glergle/glergle-api.git"
+  },
+  "keywords": [],
+  "author": "Taylor Wilhite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Glergle/glergle-api/issues"
+  },
+  "homepage": "https://github.com/Glergle/glergle-api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.5",
+    "mongoose": "^5.7.13",
+    "nodemon": "^2.0.1"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0"
+  }
+}
