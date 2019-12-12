@@ -1,22 +1,29 @@
 import express from 'express'
+import bodyParser from 'body-parser'
+import config from './config'
+import userRoutes from './routes/users'
 import loaders from './loaders'
-import User from './models/user'
 
 const app = express()
 
 loaders()
 
-app.get('/hello', (req, res) => {
-  new User({
-    name: 'Test User',
-    username: 'testuser',
-    email: 'email@example.com',
-    password: 'unsafepass'
-  }).save()
-    .then((user) => {
-      res.status(200).send(user)
-    })
-    .catch(e => console.log('error: ', e))
+app.use(bodyParser.json())
+app.use(config.api.prefix, userRoutes)
+
+app.use((req, res, next) => {
+  const err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500)
+  res.json({
+    errors: {
+      message: err.message
+    }
+  })
 })
 
 export default app
