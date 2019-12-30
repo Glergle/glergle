@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import Post from '../models/post'
 import User from '../models/user'
 import dbHandler from './dbHandler'
@@ -27,6 +28,18 @@ describe('Post', () => {
         expect(post).toBeDefined()
         expect(post.content).toEqual('Lorem Ipsum')
         expect(post.user).toEqual(user._id)
+      })
+  })
+
+  it('requires content', () => {
+    const badPost = {
+      content: '',
+      user: user._id
+    }
+    new Post(badPost).save()
+      .catch(error => {
+        console.log(error)
+        expect(error).toBeInstanceOf(mongoose.Error.ValidationError)
       })
   })
 })
