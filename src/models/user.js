@@ -22,6 +22,8 @@ userSchema.methods.getPosts = function () {
   return mongoose.model('Post').find({ user: this._id })
 }
 
+userSchema.index({ username: 1, email: 1 }, { unique: true })
+
 var User = mongoose.model('User', userSchema)
 
 export default User
