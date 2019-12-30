@@ -41,4 +41,15 @@ describe('Post', () => {
         expect(error).toBeInstanceOf(mongoose.Error.ValidationError)
       })
   })
+
+  it('requires a user', () => {
+    const badPost = {
+      content: 'test content'
+    }
+    new Post(badPost).save()
+      .catch(err => {
+        expect(err).toBeInstanceOf(mongoose.Error.ValidationError)
+        expect(err.errors.user).toBeDefined()
+      })
+  })
 })

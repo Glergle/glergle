@@ -38,7 +38,6 @@ describe('User', () => {
     const testPost = await new Post(newPost).save()
 
     const usersPosts = await user.getPosts()
-    console.log(usersPosts)
     expect(usersPosts).toBeDefined()
     expect(usersPosts).toContainEqual(expect.objectContaining(testPost._doc))
   })
