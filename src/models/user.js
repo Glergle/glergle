@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
   }
 })
 
+userSchema.methods.getPosts = function () {
+  return mongoose.model('Post').find({ user: this._id })
+}
+
 var User = mongoose.model('User', userSchema)
 
 export default User

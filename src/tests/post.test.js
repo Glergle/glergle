@@ -38,7 +38,6 @@ describe('Post', () => {
     }
     new Post(badPost).save()
       .catch(error => {
-        console.log(error)
         expect(error).toBeInstanceOf(mongoose.Error.ValidationError)
       })
   })
