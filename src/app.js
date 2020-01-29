@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import config from './config'
 import userRoutes from './routes/users'
+import postRoutes from './routes/posts'
 import loaders from './loaders'
 
 const app = express()
@@ -9,7 +10,7 @@ const app = express()
 loaders()
 
 app.use(bodyParser.json())
-app.use(config.api.prefix, userRoutes)
+app.use(config.api.prefix, [userRoutes, postRoutes])
 
 app.use((req, res, next) => {
   const err = new Error('Not Found')

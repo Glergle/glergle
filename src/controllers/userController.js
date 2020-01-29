@@ -26,7 +26,7 @@ userController.create = async (req, res) => {
         password: hash
       }
       new User(newUser).save()
-        .then(user => res.send(`User ${user.name} created successfully`))
+        .then(user => res.status(200).send(`User ${user.name} created successfully`))
         .catch(err => res.status(400).send(err.message))
     })
     .catch(err => {
