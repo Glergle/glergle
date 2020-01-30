@@ -1,0 +1,21 @@
+{
+  "name": "glergle",
+  "version": "0.2.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd api && npm run test",
+    "postinstall": "cd api && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glergle/glergle.git"
+  },
+  "keywords": [],
+  "author": "Taylor Wilhite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Glergle/glergle/issues"
+  },
+  "homepage": "https://github.com/Glergle/glergle#readme"
+}
