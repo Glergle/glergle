@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -20,6 +21,11 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.getPosts = function () {
   return mongoose.model('Post').find({ user: this._id })
+}
+
+userSchema.methods.validPassword = function (pass) {
+  return bcrypt.compare(pass, this.password)
+    .then(res => {return res})
 }
 
 userSchema.index({ username: 1, email: 1 }, { unique: true })

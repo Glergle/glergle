@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Glergle/glergle/issues"
   },
-  "homepage": "https://github.com/Glergle/glergle#readme"
+  "homepage": "https://github.com/Glergle/glergle#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }
