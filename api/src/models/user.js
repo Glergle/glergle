@@ -16,11 +16,25 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  followers: [{
+    type: String
+  }],
+  following: [{
+    type: String
+  }],
 })
 
 userSchema.methods.getPosts = function () {
   return mongoose.model('Post').find({ user: this._id })
+}
+
+userSchema.methods.followUser = function (user) {
+  return this.following.push(user)
+}
+
+userSchema.methods.addFollower = function (user) {
+  return this.followers.push(user)
 }
 
 userSchema.methods.validPassword = function (pass) {

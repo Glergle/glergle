@@ -3,5 +3,7 @@ const isLoggedIn = (req, res, next) => {
     return next()
   }
 
-  res.status(400).send({redirect: '/login'})
+  res.status(400).json({redirect: '/login'})
 }
+
+export default isLoggedIn
