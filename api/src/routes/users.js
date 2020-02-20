@@ -15,6 +15,9 @@ router.route('/login')
 router.route('/:username/follow')
   .post(isLoggedIn, followController.follow)
 
+router.route('/:username/unfollow')
+  .post(isLoggedIn, followController.unfollow)
+
 router
   .route('/me')
   .get(userController.show)

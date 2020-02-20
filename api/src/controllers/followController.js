@@ -20,4 +20,22 @@ followController.follow = async (req, res) => {
     .catch(err => res.status(202).json({message: err.message}))
 }
 
+followController.unfollow = async (req, res) => {
+  if (!req.user.following.includes(req.params.username)) {
+    return res.status(400).json({message: 'User not followed'})
+  }
+  const unfollowedUser = await User.findOne({username: req.params.username})
+  if(!unfollowedUser) {
+    return res.status(400).json({message: 'No such user'})
+  }
+  req.user.unfollowUser(req.params.username)
+  req.user.save()
+    .then(user => {
+      unfollowedUser.removeFollower(user.username)
+      unfollowedUser.save()
+    })
+    .then(user => res.status(200).json({message: `unfollowed successfully`}))
+    .catch(err => res.status(202).json({message: err.message}))
+}
+
 export default followController
