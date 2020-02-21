@@ -17,10 +17,11 @@ const App = () => {
     <AuthProvider>
       <Router>
         <div className="app-container">
-          <h1 className="text-secondary mx-auto text-center text-4xl">Hello World!</h1>
-          <Link to="/home">Home</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/login">Login</Link>
+          <nav className="bg-gray-800 text-secondary flex justify-end">
+            <Link className="py-4 px-3 hover:bg-primary hover:text-gray-800" to="/home">Home</Link>
+            <Link className="py-4 px-3 hover:bg-primary hover:text-gray-800" to="/profile">Profile</Link>
+            <Link className="py-4 px-3 hover:bg-primary hover:text-gray-800" to="/login">Login</Link>
+          </nav>
           <Switch>
             <Route path="/home">
               <Home></Home>

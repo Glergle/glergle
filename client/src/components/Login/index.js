@@ -24,7 +24,7 @@ const Login = () => {
     .then(res => res.json())
     .then(body => {
       if (body.cookie) {
-        setState({isAuthenticated: true})
+        setState({isAuthenticated: true, user: body.passport.user})
       }
     })
   }

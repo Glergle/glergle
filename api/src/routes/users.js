@@ -19,7 +19,7 @@ router.route('/:username/unfollow')
   .post(isLoggedIn, followController.unfollow)
 
 router
-  .route('/me')
+  .route('/:username')
   .get(userController.show)
 
 export default router

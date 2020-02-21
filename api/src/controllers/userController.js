@@ -5,8 +5,8 @@ const saltRounds = 12
 
 const userController = {}
 userController.show = async (req, res) => {
-  const id = req.body.id
-  const user = await User.findById(id)
+  const username = req.params.username
+  const user = await User.findOne({username: username})
   user ? res.send(user) : res.send(404)
 }
 
